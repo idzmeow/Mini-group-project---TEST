@@ -9,8 +9,8 @@ class student{
     public:
     int matric_number;
     char stdname[100];
-    int MarksPhy, MarksBio, MarksChem,  MarksMath;
-    double AvgMarks;
+    float MarksCT, MarksMech, MarksMat, MarksCalc, MarksProg;
+    float AvgMarks;
     char grade;
     void calculate();
 
@@ -22,18 +22,16 @@ class student{
 
 void student::calculate()
 {   
-    AvgMarks=(MarksPhy + MarksChem + MarksBio + MarksMath)/4.0;
+    AvgMarks=(MarksCT + MarksMat + MarksCalc + MarksProg + MarksMech)/5.0;
 
-        if (AvgMarks >= 70)
+        if (AvgMarks >= 3.67)
                 grade = 'A';
-        else if (AvgMarks >= 60)
+        else if (AvgMarks >= 2.67)
                 grade = 'B';
-        else if (AvgMarks >= 50)
+        else if (AvgMarks >= 1.67)
                 grade = 'C';
-        else if (AvgMarks >= 45)
+        else if (AvgMarks >= 0.67)
                 grade = 'D';
-        else if (AvgMarks >= 40)
-                grade = 'E';
         else
                 grade = 'F';
 }
@@ -45,14 +43,16 @@ void student::getdata()
     cout << "\n\n\t\t\t\t\tPlease enter you Full Name" << endl;
     cin.ignore();
     cin.getline (stdname, 100);
-    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Physics marks (e.g: 80)" << endl;
-    cin >> MarksPhy;
-    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Chemistry marks (e.g: 70)" << endl;
-    cin >> MarksChem;
-    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Biology marks (e.g:90)" << endl;
-    cin >> MarksBio;
-    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Mathematics marks (e.g: 50)" << endl;
-    cin >> MarksMath;
+    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Circuit Theory marks (e.g: 4.0)" << endl;
+    cin >> MarksCT;
+    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Engineering Mechanics marks (e.g: 3.5)" << endl;
+    cin >> MarksMech;
+    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Engineering Materials marks (e.g: 3.75)" << endl;
+    cin >> MarksMat;
+    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Calculus marks (e.g: 3.0)" << endl;
+    cin >> MarksCalc;
+    cout << "\n\n\t\t\t\t\tPlease enter your final year examination Programming for Engineers marks (e.g: 4.0)" << endl;
+    cin >> MarksProg;
     calculate();
 }
 
@@ -60,17 +60,18 @@ void student::showdata() const{
 
     cout << "\n\n\t\t\t\t\tStudent Matric number : " << matric_number;
     cout << "\n\n\t\t\t\t\tStudent Name : " << stdname;
-    cout << "\n\n\t\t\t\t\tPhysics marks : "<< MarksPhy;
-    cout << "\n\n\t\t\t\t\tChemistry marks : " << MarksChem;
-    cout << "\n\n\t\t\t\t\tBiology marks : " << MarksBio;
-    cout << "\n\n\t\t\t\t\tMathematics marks : " << MarksMath;
+    cout << "\n\n\t\t\t\t\tCircuit Theory marks : "<< MarksCT;
+    cout << "\n\n\t\t\t\t\tEngineering Mechanics marks : " << MarksMech;
+    cout << "\n\n\t\t\t\t\tEngineering Materials marks : " << MarksMat;
+    cout << "\n\n\t\t\t\t\tCalculus marks : " << MarksCalc;
+    cout << "\n\n\t\t\t\t\tProgramming for Engineers marks : " << MarksProg;
     cout << "\n\n\t\t\t\t\tAverage marks : " << AvgMarks;
     cout << "\n\n\t\t\t\t\tGrade achieved : " << grade;
 }
 
 void student::show_tabular() const {
-
-        cout << matric_number << setw(6) << stdname << setw(50) << MarksPhy << setw(4) << MarksChem << setw(4) << MarksBio << setw(4) << MarksMath << setw(8) << AvgMarks << setw(6) << grade << endl;
+        cout << endl;
+        cout << matric_number << setw(18) << stdname << setw(45) << MarksCT << setw(8) << MarksMech << setw(8) << MarksMat << setw(8) << MarksCalc << setw(8) << MarksProg << setw(8) << AvgMarks << setw(8) << grade << endl;
 }
 
 int student::rematricno() const{
@@ -99,8 +100,8 @@ int main()
 
 		system("cls");
 		cout << "\n\n\n\t\t\t\tMAIN MENU ";
-		cout << "\n\n\t\t\t\t\t1. RESULT MENU ";
-		cout << "\n\n\t\t\t\t\t2. ENTRY/EDIT MENU ";
+		cout << "\n\n\t\t\t\t\t1. RESULT ";
+		cout << "\n\n\t\t\t\t\t2. ENTRY/EDIT ";
 		cout << "\n\n\t\t\t\t\t3. EXIT ";
 		cout << "\n\n\t\t\t\t\tPlease Select Your Option (1-3) " << endl;
 		cin >> choice;
@@ -264,9 +265,9 @@ void classResults(){
     }
 
     cout << "\n\n\t\t\t\t\t--RESULTS FOR ALL STUDENTS--" << endl;
-    cout << "__________________________________________________________________________________________________________________________________________________________" << endl;
-    cout << "\n\n\t\t\t\t\t Matric No   Name                        Physics       Chemistry     Biology     Mathematics        Avg Grade        Grade" << endl;
-    cout << "__________________________________________________________________________________________________________________________________________________________" << endl;
+    cout << "________________________________________________________________________________________________________________________" << endl;
+    cout << "\nMatric No  Name                                                 EEE105  EBB113  EMM101  EUM113  EEE123   CGPA     Grade" << endl;
+    cout << "________________________________________________________________________________________________________________________" << endl;
 
     while(stdinFile.read(reinterpret_cast<char*> (&stud), sizeof(student))){
         

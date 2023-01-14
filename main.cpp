@@ -310,6 +310,7 @@ void introduction(){
         cout << "\n\n\t\t\t\t\tSTUDENT REPORT CARD SYSTEM" << endl;
         cout << "\n\n\t\t\t\t\t By Group 36 :D" << endl;
         cout << "\n\n\t\t\t\t\tKampus Kejuruteraan Universiti Sains Malaysia" << endl;
+        cout << "\n\n\t\t\t\t\tPlease open this window in fullscreen" << endl;
         cin.get();       
 }
 
